@@ -1,5 +1,4 @@
 --создание таблицы book, в которой будут храниться данные о книгах
-
 CREATE TABLE book (
     book_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(50),
@@ -7,3 +6,8 @@ CREATE TABLE book (
     price DECIMAL(8, 2),
     amount INT
 );
+
+select
+    *
+from
+    book
