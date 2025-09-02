@@ -6,8 +6,3 @@ CREATE TABLE book (
     price DECIMAL(8, 2),
     amount INT
 );
-
-select
-    *
-from
-    book
