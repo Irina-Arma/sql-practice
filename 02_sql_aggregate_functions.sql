@@ -1,8 +1,11 @@
-/*Примеры использования агрегатных функций SQL (SUM, COUNT, COUNT DISTINCT, MIN, MAX, AVG, ROUND)
+/*
+Примеры использования агрегатных функций SQL (SUM, COUNT, COUNT DISTINCT, MIN, MAX, AVG, ROUND)
 и группировки (GROUP BY, HAVING, DISTINCT) для анализа таблицы book:
-подсчёт количества, стоимости, цен, уникальных авторов и книг, фильтрация по условиям и сортировка*/
+подсчёт количества, стоимости, цен, уникальных авторов и книг, фильтрация по условиям и сортировка
+*/
 
 
+--Операторы DROP и EXISTS
 --Сбросить таблицу и пересоздать заново
 DROP TABLE IF EXISTS book;
 CREATE TABLE book (
@@ -23,6 +26,7 @@ VALUES
 SELECT * FROM book;
 
 
+--Операторы DISTINCT и GROUP BY
 --Выбрать уникальных авторов из таблицы book (без дубликатов)
 SELECT DISTINCT author
 FROM book;
@@ -37,6 +41,7 @@ SELECT DISTINCT amount
 FROM book;
 
 
+--Функция SUM и COUNT
 --Группировка по авторам: общее количество экземпляров книг каждого автора и
 --сколько записей (строк) относится к группе (автору)
 SELECT author,
@@ -62,13 +67,7 @@ FROM book
 GROUP BY author;
 
 
---Вывести минимальную цену книги каждого автора
-SELECT author,
-        MIN(price) AS min_price
-FROM book
-GROUP BY author;
-
-
+--Функции MIN, MAX и AVG
 --Подсчёт минимальной, максимальной и средней цены книг для каждого автора
 SELECT author AS Автор,
        MIN(price) AS Минимальная_цена,
@@ -84,6 +83,8 @@ SELECT author,
 FROM book
 GROUP BY author;
 
+
+--Функция ROUND
 --Найти среднюю цену книг каждого автора и округлить до 2 знаков после запятой
 SELECT author,
     ROUND(AVG(price),2) AS Средняя_цена
@@ -135,6 +136,7 @@ FROM book
 WHERE amount >= 5 AND amount <= 14;
 
 
+--Оператор HAVING
 --Считаем общую стоимость книг каждого автора,
 --исключая книги «Идиот» и «Белая гвардия», только для авторов с суммой > 5000, сортируем по убыванию
 SELECT author,
