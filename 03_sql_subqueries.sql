@@ -74,4 +74,20 @@ WHERE amount < ALL (
 );
 
 
---
+--Функция ABS
+--Выводим книги, у которых количество отличается от среднего по таблице более чем на 3
+SELECT title, author, amount,
+    (
+     SELECT AVG(amount)
+     FROM book
+    ) AS Среднее_количество
+FROM book
+WHERE ABS(amount - (SELECT AVG(amount) FROM book)) >3;
+
+
+--Считаем сколько и каких книг нужно докупить (Заказ), чтобы всех книг стало одинаковое количество 
+SELECT title, author, amount,
+      ((SELECT MAX(amount)
+       FROM book) - amount) AS Заказ
+FROM book
+WHERE amount < (SELECT MAX(amount) FROM book);
