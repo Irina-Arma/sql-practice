@@ -190,3 +190,6 @@ SELECT title, author, price
 FROM book
 WHERE author NOT IN ('Булгаков М.А.', 'Достоевский Ф.М.')
   AND title NOT LIKE '%Игрок%';
+
+
+SHOW DATABASES;
