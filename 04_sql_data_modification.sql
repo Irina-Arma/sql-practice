@@ -4,7 +4,7 @@
 
 --Создание таблицы supply
 CREATE TABLE supply (
-    supply_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    supply_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(50),
     author VARCHAR(30),
     price DECIMAL(8, 2),
@@ -134,3 +134,43 @@ book.price = (book.price + supply.price) / 2
 WHERE book.title = supply.title AND book.author = supply.author;
 SELECT * FROM book;
 
+
+--Удалить из таблицы supply все книги, названия которых есть в таблице book
+DELETE FROM supply
+WHERE title IN (
+        SELECT title
+        FROM book
+      );
+SELECT * FROM supply;
+
+
+--Удалить из таблицы supply книги тех авторов,
+--общее количество экземпляров книг которых в таблице book превышает 10
+DELETE FROM supply
+WHERE author IN (
+        SELECT author
+        FROM book
+        GROUP BY author
+        HAVING SUM(amount ) > 10
+      );
+SELECT * FROM supply;
+
+
+--
+
+
+
+
+
+
+
+--Проверка в какой базе я сейчас нахожусь
+SELECT DATABASE();
+
+--Показывает список таблиц в library
+SHOW TABLES FROM library;
+
+--Показывает список всех таблиц в базе (library), затем выводит содержимое таблиц book и supply
+SHOW TABLES;
+SELECT * FROM book;
+SELECT * FROM supply;

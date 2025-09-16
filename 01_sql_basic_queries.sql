@@ -8,12 +8,11 @@ SQL-файл демонстрирует работу с таблицей book: �
 --Оператор CREATE
 --Создание таблицы book, в которой будут храниться данные о книгах
 CREATE TABLE book (
-    book_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(50),
     author VARCHAR(30),
     price DECIMAL(8, 2),
-    amount INT
-);
+    amount INT );
 
 
 --Операторы INSERT и VALUES
@@ -88,38 +87,17 @@ FROM book;
 
 --Функция IF
 --Если количество книг меньше 4, то скидка будет составлять 50% от цены, в противном случае 30%
---Вариант для MySQL
 SELECT title, amount, price,
     IF(amount<4, price*0.5, price*0.7) AS sale
-FROM book;
---Вариант для SQLite
-SELECT title, amount, price,
-    CASE
-        WHEN amount < 4 THEN price * 0.5
-        ELSE price * 0.7
-    END AS sale
 FROM book;
 
 
 --Пересчёт цен: +10% для книг Булгакова, +5% для книг Есенина, остальные без изменений
---Вариант для MySQL
 SELECT author, title,
     ROUND(
      IF(author = 'Булгаков М.А.', price * 1.1,
          IF(author = 'Есенин С.А.', price * 1.05, price * 1)),
      2) AS new_price
-FROM book;
---Вариант для SQLite
-SELECT
-    author,
-    title,
-    ROUND(
-        CASE
-            WHEN author = 'Булгаков М.А.' THEN price * 1.1
-            WHEN author = 'Есенин С.А.' THEN price * 1.05
-            ELSE price
-        END,
-    2) AS new_price
 FROM book;
 
 
@@ -190,6 +168,3 @@ SELECT title, author, price
 FROM book
 WHERE author NOT IN ('Булгаков М.А.', 'Достоевский Ф.М.')
   AND title NOT LIKE '%Игрок%';
-
-
-SHOW DATABASES;
