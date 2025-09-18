@@ -25,13 +25,20 @@
 
 ---
 
+### [04_sql_data_modification](./04_sql_data_modification.sql)  
+Примеры изменения данных и структуры таблиц с помощью операторов `INSERT`, `UPDATE`, `DELETE`, `ALTER`.  
+Добавление книг из таблицы `supply` в `book` с разными условиями, корректировка цен и количества в зависимости от остатков и заказов.  
+Создание таблицы заказов `ordering` с фиксированным и средним количеством экземпляров через подзапросы.
+
+---
+
 ## Используемые возможности SQL
 
-- **DDL / DML:** `CREATE TABLE`, `DROP TABLE IF EXISTS`, `INSERT INTO`
-- **Базовые выборки:** `SELECT`, `DISTINCT`, `AS`, `ORDER BY`
-- **Фильтрация:** `WHERE`, `AND`, `OR`, `NOT`, `IN`, `NOT IN`, `BETWEEN`, `LIKE`, `NOT LIKE`
-- **Агрегатные функции:** `SUM`, `COUNT`, `COUNT DISTINCT`, `MIN`, `MAX`, `AVG`, `ROUND`
-- **Условные выражения:** `IF`, `CASE`
-- **Подзапросы:** вложенные `SELECT`, `IN (SELECT)`, `ALL (SELECT)`
-- **Дополнительные функции:** `ABS`
-- **Группировка:** `GROUP BY`, `HAVING`
+**DDL / DML:** `CREATE TABLE`, `DROP TABLE IF EXISTS`, `INSERT INTO`, `ALTER TABLE`, `UPDATE`, `DELETE`  
+**Базовые выборки:** `SELECT`, `DISTINCT`, `AS`, `ORDER BY`  
+**Фильтрация:** `WHERE`, `AND`, `OR`, `NOT`, `IN`, `NOT IN`, `BETWEEN`, `LIKE`, `NOT LIKE`  
+**Агрегатные функции:** `SUM`, `COUNT`, `COUNT DISTINCT`, `MIN`, `MAX`, `AVG`, `ROUND`  
+**Условные выражения:** `IF`, `CASE`  
+**Подзапросы:** вложенные `SELECT`, `IN (SELECT)`, `ALL (SELECT)`  
+**Дополнительные функции:** `ABS`  
+**Группировка:** `GROUP BY`, `HAVING` 
