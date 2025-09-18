@@ -4,34 +4,41 @@
 
 ---
 
-### 01_sql_basic_queries
+### [01_sql_basic_queries](./01_sql_basic_queries.sql)
 
 Работа с таблицей `book`: создание таблицы, вставка данных, базовые запросы `SELECT`.  
 Используются фильтрация (`WHERE`, `BETWEEN`, `IN`, `LIKE`), сортировка (`ORDER BY`), вычисляемые поля, функции `ROUND`, условные выражения (`IF`, `CASE`), псевдонимы колонок (`AS`).  
 
 ---
 
-### 02_sql_aggregate_functions
+### [02_sql_aggregate_functions](./02_sql_aggregate_functions.sql) 
 
 Примеры использования агрегатных функций (`SUM`, `COUNT`, `MIN`, `MAX`, `AVG`, `ROUND`) и группировки (`GROUP BY`, `HAVING`, `DISTINCT`).  
 Рассчитывается количество, стоимость, уникальные значения, средние и крайние цены книг.  
 
 ---
 
-### 03_sql_subqueries
+### [03_sql_subqueries](./03_sql_subqueries.sql) 
  
 Примеры использования подзапросов (`WHERE`, `IN`, `ALL`), вложенных агрегатных функций и условий.  
 Рассматриваются задачи поиска минимальных и средних значений, проверка отклонений через `ABS`, работа с уникальными количествами и расчёт заказов для выравнивания остатков.  
 
 ---
 
+### [04_sql_data_modification](./04_sql_data_modification.sql)  
+Примеры изменения данных и структуры таблиц с помощью операторов `INSERT`, `UPDATE`, `DELETE`, `ALTER`.  
+Добавление книг из таблицы `supply` в `book` с разными условиями, корректировка цен и количества в зависимости от остатков и заказов.  
+Создание таблицы заказов `ordering` с фиксированным и средним количеством экземпляров через подзапросы.
+
+---
+
 ## Используемые возможности SQL
 
-- **DDL / DML:** `CREATE TABLE`, `DROP TABLE IF EXISTS`, `INSERT INTO`
-- **Базовые выборки:** `SELECT`, `DISTINCT`, `AS`, `ORDER BY`
-- **Фильтрация:** `WHERE`, `AND`, `OR`, `NOT`, `IN`, `NOT IN`, `BETWEEN`, `LIKE`, `NOT LIKE`
-- **Агрегатные функции:** `SUM`, `COUNT`, `COUNT DISTINCT`, `MIN`, `MAX`, `AVG`, `ROUND`
-- **Условные выражения:** `IF`, `CASE`
-- **Подзапросы:** вложенные `SELECT`, `IN (SELECT)`, `ALL (SELECT)`
-- **Дополнительные функции:** `ABS`
-- **Группировка:** `GROUP BY`, `HAVING`
+**DDL / DML:** `CREATE TABLE`, `DROP TABLE IF EXISTS`, `INSERT INTO`, `ALTER TABLE`, `UPDATE`, `DELETE`  
+**Базовые выборки:** `SELECT`, `DISTINCT`, `AS`, `ORDER BY`  
+**Фильтрация:** `WHERE`, `AND`, `OR`, `NOT`, `IN`, `NOT IN`, `BETWEEN`, `LIKE`, `NOT LIKE`  
+**Агрегатные функции:** `SUM`, `COUNT`, `COUNT DISTINCT`, `MIN`, `MAX`, `AVG`, `ROUND`  
+**Условные выражения:** `IF`, `CASE`  
+**Подзапросы:** вложенные `SELECT`, `IN (SELECT)`, `ALL (SELECT)`  
+**Дополнительные функции:** `ABS`  
+**Группировка:** `GROUP BY`, `HAVING` 
