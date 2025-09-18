@@ -1,5 +1,7 @@
 /*
-
+Примеры изменения данных и структуры таблиц с помощью операторов INSERT, UPDATE, DELETE, ALTER.
+Добавление книг из таблицы supply в book с разными условиями, корректировка цен и количества в зависимости от остатков и заказов.
+Создание таблицы заказов ordering с фиксированным и средним количеством экземпляров через подзапросы.
 */
 
 --Создание таблицы supply
@@ -156,9 +158,25 @@ WHERE author IN (
 SELECT * FROM supply;
 
 
---
+--Формируем таблицу заказов ordering: выбираем книги, где осталось < 4, и указываем заказать 5 экземпляров
+CREATE TABLE ordering AS
+SELECT author, title, 5 AS amount
+FROM book
+WHERE amount < 4;
+SELECT * FROM ordering;
 
 
+--Создаём таблицу заказов ordering: берём книги, где экземпляров меньше среднего,
+--и ставим среднее значение в столбец amount
+CREATE TABLE ordering AS
+SELECT author, title,
+   (
+    SELECT ROUND(AVG(amount))
+    FROM book
+   ) AS amount
+FROM book
+WHERE amount < (SELECT ROUND(AVG(amount)) FROM book);
+SELECT * FROM ordering;
 
 
 
