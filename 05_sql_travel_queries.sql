@@ -89,3 +89,37 @@ ORDER BY Длительность DESC, city DESC;
 SELECT name, city, date_first, date_last
 FROM trip
 WHERE (DATEDIFF(date_last, date_first)) = (SELECT MIN(DATEDIFF(date_last, date_first)) FROM trip);
+
+
+--Функция MONTH(дата)
+--Выбираем командировки, где дата начала и конца в одном месяце (год не учитывается)
+SELECT name, city, date_first, date_last
+FROM trip
+WHERE MONTH(date_first) = MONTH(date_last)
+ORDER BY city ASC, name ASC;
+
+
+--Функция MONTHNAME(дата)
+--Счёт командировок по месяцам начала с сортировкой по убыванию количества и по алфавиту месяца
+SELECT MONTHNAME(date_first) AS Месяц,
+COUNT(date_first) AS Количество
+FROM trip
+GROUP BY MONTHNAME(date_first)
+ORDER BY Количество DESC, Месяц ASC;
+
+
+--Функции MONTH(дата) и YEAR(дата)
+--Сумма суточных за командировки, начавшиеся в феврале или марте 2020, сортировка по фамилии и убыванию суммы
+SELECT name, city, date_first,
+(DATEDIFF(date_last, date_first)+1)*per_diem AS Сумма
+FROM trip
+WHERE YEAR (date_first) = 2020 AND (MONTH(date_first) = 2 OR MONTH(date_first) = 3)
+ORDER BY name ASC, Сумма DESC;
+
+
+-- Общая сумма суточных сотрудников с более чем 3 командировками, сортировка по убыванию суммы
+SELECT name, SUM ((DATEDIFF(date_last, date_first)+1)*per_diem) AS Сумма
+FROM trip
+GROUP BY name
+HAVING COUNT(name) > 3
+ORDER BY Сумма DESC;
