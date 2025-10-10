@@ -34,15 +34,14 @@
 
 ---
 
-## Используемые возможности SQL
+### [06_sql_fines_queries](./06_sql_fines_queries.sql)
+Работа с таблицами штрафов и нарушений ПДД: создание, наполнение, обновление и удаление данных.
+Используются условные выражения IF, группировка, подзапросы и каскадное обновление штрафов.
+Реализовано заполнение пропусков, формирование таблицы неоплаченных штрафов и корректировка сумм при быстрой оплате.
 
-**DDL / DML:** `CREATE TABLE`, `DROP TABLE IF EXISTS`, `INSERT INTO`, `ALTER TABLE`, `UPDATE`, `DELETE`  
-**Базовые выборки:** `SELECT`, `DISTINCT`, `AS`, `ORDER BY`  
-**Фильтрация:** `WHERE`, `AND`, `OR`, `NOT`, `IN`, `NOT IN`, `BETWEEN`, `LIKE`, `NOT LIKE`  
-**Агрегатные функции:** `SUM`, `COUNT`, `COUNT DISTINCT`, `MIN`, `MAX`, `AVG`, `ROUND`  
-**Условные выражения:** `IF`, `CASE`  
-**Подзапросы:** вложенные `SELECT`, `IN (SELECT)`, `ALL (SELECT)`  
-**Функции работы с датами:** `DATEDIFF`, `MONTH`, `MONTHNAME`, `YEAR`  
-**Дополнительные функции:** `ABS`  
-**Группировка:** `GROUP BY`, `HAVING`  
-**Ограничение выборки:** `LIMIT`
+---
+
+### [07_sql_relations_and_joins](./07_sql_relations_and_joins.sql)
+Работа со связанными таблицами и внешними ключами.
+Создаются связи между таблицами author, book и genre, демонстрируются соединения INNER/LEFT/RIGHT/CROSS JOIN.
+Показаны принципы каскадного удаления (ON DELETE CASCADE) и подстановки NULL при удалении связанных записей.
